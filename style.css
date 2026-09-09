@@ -395,35 +395,71 @@ section {
   box-shadow: 0 0 0 3px var(--brand-light);
 }
 
+/* ปุ่ม ☰ ซ่อนไว้บนหน้าจอคอม */
+.menu-toggle {
+  display: none;
+  background-color: var(--brand);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
 /* ---------- 15. จอแท็บเล็ตและมือถือ (แคบกว่า 768px) ---------- */
 @media (max-width: 768px) {
+
   body {
     font-size: 16px;
   }
-  
-  /* เมนูเรียงลงมาและอยู่กึ่งกลาง */
+
   .site-header {
     flex-direction: column;
     text-align: center;
   }
-  
+
+  /* แสดงปุ่ม ☰ บนมือถือ */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* ซ่อนเมนูไว้ก่อน */
+  .site-nav {
+    display: none;
+    width: 100%;
+  }
+
+  /* เมื่อกดปุ่ม ☰ JavaScript จะเพิ่ม class open */
+  .site-nav.open {
+    display: block;
+  }
+
+  /* เมนูเรียงลงด้านล่าง */
   .site-nav ul {
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
-  
-  /* ส่วนแนะนำตัวเรียงลงมารูปอยู่บน */
+
+  /* ส่วนแนะนำตัวเรียงลงมา รูปอยู่บน */
   .hero {
     flex-direction: column;
     text-align: center;
   }
-  
-  h1 { font-size: 1.7rem; }
-  h2 { font-size: 1.35rem; }
-  
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
   main {
     padding: 16px;
   }
-  
+
   section {
     padding: 18px;
   }
@@ -450,16 +486,17 @@ section {
 }
 
 /* ---------- 17. สไตล์สำหรับสั่งพิมพ์ ---------- */
-@media print {
-  .site-header,
-  .site-footer,
-  .btn {
-    display: none; /* ไม่ต้องพิมพ์เมนูและปุ่ม */
-  }
-  
-  section {
-    border: none;
-    page-break-inside: avoid; /* ห้ามตัดกลาง section */
-  }
+@media print { 
+  .site-header, 
+  .site-footer, 
+  .btn,
+  .menu-toggle { 
+    display: none; 
+  } 
+   
+  section { 
+    border: none; 
+    page-break-inside: avoid; 
+  } 
 }
 
